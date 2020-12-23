@@ -1,6 +1,24 @@
+var battleButton = $("#battle-button")
+console.log("hello world")
+console.log(userPokemon)
+getPokeAPIs();
 //TODO: battle button that starts the pokemon battle game.
 
+
 //TODO: function that accesses the Poke Api to assign random pokemon to the user array
+function getPokeAPIs(){
+    var number = 1;
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${number}/`
+
+    $.ajax({
+        url: pokeAPI,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response)
+    })
+
+}
+
 
 //TODO: function that accesses the Poke Api to assign random pokemon to the opponent 
 
@@ -19,3 +37,5 @@
     //TODO: once the user pokemon tracking health reaches 0 then go to index.html 
 
     //TODO: once the oppononent pokemon tacking health reaches 0 then go to gallery.html
+
+
