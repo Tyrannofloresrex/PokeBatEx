@@ -1,13 +1,20 @@
 var battleButton = $("#battle-button")
+var wildPokemon = []
+var caughtPokemon = []
 console.log("hello world")
-console.log(userPokemon)
+generatePokemonAry();
 getPokeAPIs();
-//TODO: battle button that starts the pokemon battle game.
 
+//TODO: battle button that starts the pokemon battle game.
+$("#battle-button").on("click", function(){
+    
+    console.log("testing button")
+});
 
 //TODO: function that accesses the Poke Api to assign random pokemon to the user array
 function getPokeAPIs(){
-    var number = 1;
+    var number = wildPokemon[Math.floor(Math.random()*wildPokemon.length)];
+    console.log(number)
     let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${number}/`
 
     $.ajax({
@@ -16,6 +23,17 @@ function getPokeAPIs(){
     }).then(function(response) {
         console.log(response)
     })
+
+}
+//generates the pokemon array that holds a number from 1 - 898 that equates to the pokedex
+function generatePokemonAry(){
+    wildPokemon = []
+
+    for (let i = 0; i < 899; i++) {
+        wildPokemon.push(i);
+        
+    }
+    return wildPokemon;
 
 }
 
