@@ -15,9 +15,9 @@ $searchButton.click(function (event) {
   }).then(function (data) {
     console.log(data);
   
-    var cardImage = $("<img>")
-    cardImage.attr("src", data.cards[1].imageUrl);
-    $(".gallery").append(cardImage)
+    var apiImage = $("<img>")
+    apiImage.attr("src", data.cards[1].imageUrl);
+    $(".gallery").append(apiImage)
    
    forEach() // $(".gallery").prepend($("<img>", {id:'$cardName', src: "data.cards[1].imageUrl"}));
 });
