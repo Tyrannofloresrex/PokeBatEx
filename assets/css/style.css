@@ -1,0 +1,17 @@
+/* html, body, pre, code, kbd, samp {
+    font-family: "Press+Start+2P";
+}; */
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 100px;
+};
+.content div {
+    width: 50vw;
+    height: 35vh;
+    /* margin: 100px 100px */
+    /* display: flex; */
+    /* justify-content: center; */
+};
