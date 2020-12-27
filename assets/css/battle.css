@@ -1,0 +1,10 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 100px;
+};
+.content div {
+    width: 50vw;
+    height: 35vh;
+};
