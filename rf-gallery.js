@@ -9,7 +9,6 @@ console.log(localStorage.getItem("caughtCards"))
 if (localStorage.getItem("caughtCards") === null) {
   caughtCards = [];
 } else {
-  // Google How to convert string to an array
   var str = localStorage.getItem("caughtCards");
   caughtCards = str.split(",")
 
@@ -50,6 +49,7 @@ $searchButton.click(function (event) {
 
   
 $clearButton.click(function(){
+  alert("Are you sure you want to clear")
   localStorage.clear()
 })
 ;
