@@ -1,0 +1,29 @@
+.content {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin-top: 100px;
+    margin: 0 100px;
+    background-image: url("https://github.com/Tyrannofloresrex/PokeBatEx/blob/development/assets/images/download-2.jpg?raw=true");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: auto;
+};
+.content div {
+    width: 60vw;
+    height: 50vh;
+};
+.buttons {
+    display: flex;
+    justify-content: left; 
+    
+};
+/* #main-battle {
+    
+    background-color: lightgreen;
+}; */
+/* #main-battle {
+    background-image: url(../../assets/images/download-2.jpg);
+    background-size: cover;
+}; */
