@@ -5,7 +5,7 @@ var caughtCards
 var $clearButton = $("#clear-button");
 
 console.log(localStorage.getItem("caughtCards"))
-
+console.log(caughtPokemon)
 if (localStorage.getItem("caughtCards") === null) {
   caughtCards = [];
 } else {
