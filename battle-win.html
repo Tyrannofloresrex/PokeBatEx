@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/battle.css">
 </head>
+
 <body>
     <!-- pseudo code battle screen!! -->
     <!-- header> BATTLE! <header -->
-        <marquee behavior="scroll" direction="left">Battle Gotta Catch Em' All</marquee>
+    <marquee behavior="scroll" direction="left">Battle Gotta Catch Em' All</marquee>
     <div class="content">
-    
-        <div class="nes-container with-title is-centered" id="container">
-        <p class="title">Pokemon Battle Experience</p>
-        <p>Game info here!!</p>
-        <a class="nes-btn" href="battle-win.html" id="battle-button">Battle!</a>
-        <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
-        <!-- <button type="button" class="nes-btn is-primary" id="gallery-button">Gallery</button> -->
-      </div>
-        
 
-
+        <div class="nes-container with-title is-centered" id="main-battle">
+            <p class="title">Pokemon Battle Experience</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, adipisci consequuntur rem ex sit dolore magnam molestiae quibusdam excepturi libero incidunt, pariatur porro iusto alias enim vitae beatae saepe cupiditate.</p>
+            <div id="opponent-box">
+            </div>
+        </div>
     </div>
+    <div class="nes-container with-title">
+        <a class="nes-btn" href="#" id="battle-button">Battle!</a>
+        <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
+    </div>
+    <div class="nes-container with-title">
+        <p class="title">Choose Your Move</p>
+        <button type="button" class="nes-btn is-primary" id="move1">blank1</button>
+        <button type="button" class="nes-btn is-success" id="move2">blank2</button>
+        <button type="button" class="nes-btn is-warning" id="move3">blank3</button>
+        <button type="button" class="nes-btn is-error" id="move4">blank4</button>
+    </div>
+
     <!-- container div -->
     <!-- opponent div -->
-        <!-- left: poke name, poke health -->
-        <!-- right: poke sprite front -->
+    <!-- left: poke name, poke health -->
+    <!-- right: poke sprite front -->
 
     <!-- player div -->
-        <!-- left: poke sprite back -->
-        <!-- right: poke name, poke health -->
+    <!-- left: poke sprite back -->
+    <!-- right: poke name, poke health -->
 
     <!-- option box div -->
-        <!-- move1 button -->
-        <!-- move2 button -->
-        <!-- move3 button -->
-        <!-- move4 button -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js%22%3E"></script>
+    <!-- move1 button -->
+    <!-- move2 button -->
+    <!-- move3 button -->
+    <!-- move4 button -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js%22%3E"></script> -->
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
