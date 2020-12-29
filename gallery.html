@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/gallery.css">
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css" /> -->
+    <title>Poke Gallery</title>
+  </head>
+  <body>
+    <main>
+      <form class="nes-field">
+        <input
+          id="card-search"
+          type="text"
+          class="nes-input"
+          placeholder="Find that Pokemon"
+        />
+        <button type="submit" id="search-button">Search</button>
+        <button type="button" id="clear-button">Clear</button>
+      </form>
+      <div class="gallery">
+        <div class="desc">Gotta Catch 'Em All!</div>
+      </div>
+    </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js%22%3E"></script>
-    <script src="assets/js/script.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="assets/js/scriptBattle.js"></script>
+    <script src="assets/js/scriptGallery.js"></script>
+  </body>
 </html>
