@@ -7,23 +7,24 @@
     background-image: url("https://github.com/Tyrannofloresrex/PokeBatEx/blob/development/assets/images/download-2.jpg?raw=true");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 250px;
+    height: auto;
     width: auto;
 };
-.content div {
-    width: 60vw;
-    height: 50vh;
+.battle-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 };
 .buttons {
     display: flex;
-    justify-content: left; 
-    
+    justify-content: center;   
 };
-/* #main-battle {
-    
-    background-color: lightgreen;
-}; */
-/* #main-battle {
-    background-image: url(../../assets/images/download-2.jpg);
-    background-size: cover;
-}; */
+.banner {
+    background-color: yellow;
+};
+#table {
+    background: transparent;
+};
+#middle-image {
+    background-image: url(../images/Screen\ Shot\ 2020-12-29\ at\ 8.18.21\ PM.png)
+};

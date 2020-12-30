@@ -13,28 +13,56 @@
 <body>
     <!-- pseudo code battle screen!! -->
     <!-- header> BATTLE! <header -->
-    <marquee behavior="scroll" direction="left">Battle Gotta Catch Em' All</marquee>
+    <marquee behavior="scroll" direction="left" class="banner"><span><i class="nes-pokeball"></i></span> Gotta Catch 'Em All! <span><i class="nes-pokeball"></i></span></marquee>
+    
     <div class="content">
-
+        
         <div class="nes-container with-title is-centered" id="main-battle">
             <p class="title">Pokemon Battle Experience</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, adipisci consequuntur rem ex sit dolore magnam molestiae quibusdam excepturi libero incidunt, pariatur porro iusto alias enim vitae beatae saepe cupiditate.</p>
-            <div id="opponent-box">
+            <div class="nes-table-responsive">
+                <table class="nes-table is-bordered is-centered" id="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p id="user-name"></p>
+                                <progress class="nes-progress is-primary" value="80" max="100"></progress>
+                                <p id="user-pokemon"></p>
+                            </td>
+                            <td id="middle-image"></td>
+                            <td>
+                                <p id="wild-pokemon"></p>
+                                <progress class="nes-progress is-primary" value="80" max="100"></progress>
+                                <p id="wild-name"></p>
+                            </td>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                <div class="buttons">
+                    <div class="nes-container with-title is-centered">
+                        <p class="title">Choose Your Move</p>
+                        <button type="button" class="nes-btn is-primary" id="move1"></button>
+                        <button type="button" class="nes-btn is-success" id="move2"></button>
+                        <button type="button" class="nes-btn is-warning" id="move3"></button>
+                        <button type="button" class="nes-btn is-error" id="move4"></button>
+                    </div>
+                </div>
+                <div class="battle-home">
+                    <div class="nes-container with-title is-centered">
+                        <a class="nes-btn" href="#" id="battle-button">Battle!</a>
+                        <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="nes-container with-title">
-        <a class="nes-btn" href="#" id="battle-button">Battle!</a>
-        <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
-    </div>
-    <div class="nes-container with-title">
-        <p class="title">Choose Your Move</p>
-        <button type="button" class="nes-btn is-primary" id="move1"></button>
-        <button type="button" class="nes-btn is-success" id="move2"></button>
-        <button type="button" class="nes-btn is-warning" id="move3"></button>
-        <button type="button" class="nes-btn is-error" id="move4"></button>
-    </div>
 
+   
+   
     <!-- container div -->
     <!-- opponent div -->
     <!-- left: poke name, poke health -->
