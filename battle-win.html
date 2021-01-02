@@ -13,36 +13,91 @@
 <body>
     <!-- pseudo code battle screen!! -->
     <!-- header> BATTLE! <header -->
-    <marquee behavior="scroll" direction="left">Battle Gotta Catch Em' All</marquee>
+    <marquee behavior="scroll" direction="left" class="banner" style="color: rgb(97, 144, 245);"><span><i class="nes-pokeball"></i></span> Gotta Catch 'Em All! <span><i class="nes-pokeball"></i></span></marquee>
+    
     <div class="content">
-
-        <div class="nes-container with-title is-centered" id="main-battle">
+        
+        <div class="nes-container with-title is-centered" id="main-battle" style="background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2f4d65dd-57b0-4a37-8df3-f4c2c7f98c60/d50ccqa-f9ee059b-27f8-4ea2-a55f-ff9573fa53c0.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMmY0ZDY1ZGQtNTdiMC00YTM3LThkZjMtZjRjMmM3Zjk4YzYwXC9kNTBjY3FhLWY5ZWUwNTliLTI3ZjgtNGVhMi1hNTVmLWZmOTU3M2ZhNTNjMC5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.OqTLUStwiJLBYItALH3QbaXpvnTvhKmN0zUleG9W3BI); background-size: cover; background-repeat: no-repeat;">
             <p class="title">Pokemon Battle Experience</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, adipisci consequuntur rem ex sit dolore magnam molestiae quibusdam excepturi libero incidunt, pariatur porro iusto alias enim vitae beatae saepe cupiditate.</p>
-            <div id="opponent-box">
+            
+            <!-- <div>
+                <div class="nes-container with-title is-centered" id="user" style="float: left;">
+                    <p id="user-name"></p>
+                    <progress class="nes-progress is-primary" value="80" max="100"></progress>
+                    <p id="user-pokemon"></p>
+                </div>
+                <div class="nes-container with-title is-centered" id="img" style="float: left;">
+                <img src="https://i.postimg.cc/JhrkRkxR/Screen-Shot-2020-12-29-at-8-18-21-PM.png" alt="miggle-image" class="middle-image" style="float: left;">
+                </div>
+                <div class="nes-container with-title is-centered" id="wild" style="float: left;">
+                    <p id="wild-pokemon"></p>
+                    <progress class="nes-progress is-primary" value="80" max="100"></progress>
+                    <p id="wild-name"></p>
+                </div>
+            </div> -->
+            
+            <div class="nes-table-responsive">
+                <table class="nes-table is-bordered is-centered" style="background-color:rgba(0, 0, 0, 0);">
+                    <tbody>
+                        <tr>
+                            <td id="table">
+                                <div class="nes-container with-title is-centered" style="background-color: white;">
+                                <p id="user-name"></p>
+                                <progress class="nes-progress is-primary" value="80" max="100"></progress>
+                                <p id="user-pokemon"></p>
+                                </div>
+                            </td>
+                            <td>
+                                <img src="https://i.postimg.cc/JhrkRkxR/Screen-Shot-2020-12-29-at-8-18-21-PM.png" alt="miggle-image" class="middle-image">
+                            </td>
+                            <td>
+                                <div class="nes-container with-title is-centered" style="background-color: white;">
+                                <p id="wild-pokemon"></p>
+                                <progress class="nes-progress is-primary" value="80" max="100"></progress>
+                                <p id="wild-name"></p>
+                                </div>
+                            </td>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>   
+                </table>
+                <div class="buttons" style="margin-top: 15px;">
+                    <div class="nes-container with-title is-centered" id="buttons">
+                        <p class="title">Choose Your Move</p>
+                        <button type="button" class="nes-btn is-primary" id="move1"></button>
+                        <button type="button" class="nes-btn is-success" id="move2"></button>
+                        <button type="button" class="nes-btn is-warning" id="move3"></button>
+                        <button type="button" class="nes-btn is-error" id="move4"></button>
+                    </div>
+                </div>
+                <div class="battle-home" style="margin-top: 15px;">
+                    <div class="nes-container with-title is-centered">
+                        <a class="nes-btn" href="#" id="battle-button">Battle!</a>
+                        <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="nes-container with-title">
-        <a class="nes-btn" href="#" id="battle-button">Battle!</a>
-        <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
-    </div>
-    <div class="nes-container with-title">
-        <p class="title">Choose Your Move</p>
-        <button type="button" class="nes-btn is-primary" id="move1"></button>
-        <button type="button" class="nes-btn is-success" id="move2"></button>
-        <button type="button" class="nes-btn is-warning" id="move3"></button>
-        <button type="button" class="nes-btn is-error" id="move4"></button>
-    </div>
 
+   
+   
     <!-- container div -->
     <!-- opponent div -->
     <!-- left: poke name, poke health -->
     <!-- right: poke sprite front -->
-    <div id = wild-pokemon></div>
+    
     <!-- player div -->
     <!-- left: poke sprite back -->
-    <div id = user-pokemon></div>
+    
     <!-- right: poke name, poke health -->
 
     <!-- option box div -->
