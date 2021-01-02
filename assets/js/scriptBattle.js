@@ -2,10 +2,14 @@ var battleButton = $("#battle-button")
 var wildPokemon = []
 var caughtPokemon = []
 var wildPokemonSprite
-var move1;
-var move2;
-var move3;
-var move4;
+var moveName1;
+var moveName2;
+var moveName3;
+var moveName4;
+var moveType1;
+var moveType2;
+var moveType3;
+var moveType4;
 generatePokemonAry();
 getPokemon();
 getWildPokeAPI();
@@ -17,6 +21,8 @@ storePokemon();
 $("#battle-button").on("click", function(event){
     event.preventDefault();
     console.log("testing button")
+    $(".battle-home").hide();
+    $("#main-battle").show();
 });
 
 //TODO: function that accesses the Poke Api to assign random pokemon to the user array
@@ -49,11 +55,12 @@ function getUserPokeAPI(){
         url: pokeAPI,
         method: "GET"
     }).then(function(response) {
-        console.log(response)
-        move1 = response.moves[0].move.name;
-        move2 = response.moves[1].move.name;
-        move3 = response.moves[2].move.name;
-        move4 = response.moves[3].move.name;
+        console.log(response.moves[0].move.url)
+        moveName1 = response.moves[0].move.name;
+        moveName2 = response.moves[1].move.name;
+        moveName3 = response.moves[2].move.name;
+        moveName4 = response.moves[3].move.name;
+        moveType1 = response.moves[0]
         console.log(move1);
         userPokemonSprite = response.sprites.back_default;
         generatePokemonUser();
@@ -104,13 +111,37 @@ function generatePokemonUser(){
 
 //TODO: function that uses 4 random moves from the opponent pokemon to interact with the user
 function generateMoves(){
-    $("#move1").text(move1)
-    $("#move2").text(move2)
-    $("#move3").text(move3)
-    $("#move4").text(move4)
+    $("#move1").text(moveName1)
+    $("#move2").text(moveName2)
+    $("#move3").text(moveName3)
+    $("#move4").text(moveName4)
 }
 
 //TODO: battle sequence function that is the core of the app that pulls from other functions
+
+//onclicks for move buttons 1-4 that will do damage based off of the typing
+$("#move1").on("click", function(event){
+    event.preventDefault();
+    console.log(move1);
+});
+
+$("#move2").on("click", function(event){
+    event.preventDefault();
+
+});
+
+$("#move3").on("click", function(event){
+    event.preventDefault();
+
+});
+
+$("#move4").on("click", function(event){
+    event.preventDefault();
+
+});
+
+
+
 
     //TODO: User is able to press a button from 4 moves that will do damage based off of typing
 
