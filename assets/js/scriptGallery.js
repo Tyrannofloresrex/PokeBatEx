@@ -4,7 +4,7 @@ var $gallery = $(".gallery");
 var cachedImages = JSON.parse(localStorage.getItem("cachedImages")) || [];
 var $clearButton = $("#clear-button");
 
-
+pokeNums.sort()
 // loops through pokedex numbers in storedcaughtPokemon array, fetches data from API based on number, returns URL img value and appends to page.
 for (let i = 0; i < pokeNums.length; i++) {
   const cardNum = pokeNums[i];
@@ -14,13 +14,18 @@ for (let i = 0; i < pokeNums.length; i++) {
   if (!cachedImages[cardNum]) {
     $.ajax({
       url: queryURL,
-      method: "GET",
+      method: "GET",  
     }).then(function (data) {
       console.log(data);
       // Creates html img element and applies the image URL to that img tag, then appends it to gallery.
       var apiImage = $("<img>");
 
-      apiImage.attr("src", data.cards[1].imageUrl);
+      // $('.gallery').append(`<div><img src='${imageURL}'><span>${cadNum}</span></div>`)
+
+      apiImage.attr({
+       "src": data.cards[1].imageUrl,
+       "cardNum": cardNum
+      });
       $(".gallery").append(apiImage);
       // cardNum is  the pokedex number and acts as a key that corresponds to the value, which is the image url.
       cachedImages[cardNum] = data.cards[1].imageUrl;
@@ -29,19 +34,31 @@ for (let i = 0; i < pokeNums.length; i++) {
   } else {
     // If the cardNum is already stored, an image tag is created and it's attributes come from localstorage and is appended to gallery.
     var caughtImage = $("<img>");
-    caughtImage.attr("src", (cachedImages[cardNum]));
+    caughtImage.attr({
+      "src": cachedImages[cardNum], 
+      "cardNum": cardNum
+     });
     $(".gallery").append(caughtImage);
+
+
 
   }
 }
 
-$clearButton.click(function () {
-  alert("Are you sure you want to clear");
-  localStorage.clear();
-});
+// targeting img elements that will be on the page at some point
+$('.gallery').on('click','img',function(){
+  console.log( $(this).attr("cardNum") )
+})
 
-// var pokemonObject = {
-//   imgURL: data.cards[1].imageUrl,
-//   pokedexNum: data.cards[1].nationalPokedexNumber
 
-// }
+
+  
+
+
+$clearButton.click(function() {
+  if (confirm("Are you sure you want to free all of your Pok\u00E9mon?") == true) {
+    localStorage.clear();
+    location.reload();
+  } else {
+  };
+})

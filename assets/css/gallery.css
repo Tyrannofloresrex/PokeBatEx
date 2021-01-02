@@ -12,3 +12,10 @@ img {
     align-items: center;
     align-content: center;
 }
+
+#button-box {
+    display: flex;
+    justify-content: center;
+    
+    
+}
