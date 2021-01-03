@@ -9,8 +9,9 @@ pokeNums.sort()
 for (let i = 0; i < pokeNums.length; i++) {
   const cardNum = pokeNums[i];
   var queryURL = `https://api.pokemontcg.io/v1/cards?nationalPokedexNumber=${cardNum}`;
-
+  
   // If the Pokedex number is not stored in local storage in with  the key(cardNum) and value(api img url), then it queries API and gets info.
+
   if (!cachedImages[cardNum]) {
     $.ajax({
       url: queryURL,
@@ -23,12 +24,12 @@ for (let i = 0; i < pokeNums.length; i++) {
       // $('.gallery').append(`<div><img src='${imageURL}'><span>${cadNum}</span></div>`)
 
       apiImage.attr({
-       "src": data.cards[1].imageUrl,
+       "src": data.cards[0].imageUrl,
        "cardNum": cardNum
       });
       $(".gallery").append(apiImage);
       // cardNum is  the pokedex number and acts as a key that corresponds to the value, which is the image url.
-      cachedImages[cardNum] = data.cards[1].imageUrl;
+      cachedImages[cardNum] = data.cards[0].imageUrl;
       localStorage.setItem("cachedImages", JSON.stringify(cachedImages));
     });
   } else {
@@ -39,22 +40,16 @@ for (let i = 0; i < pokeNums.length; i++) {
       "cardNum": cardNum
      });
     $(".gallery").append(caughtImage);
-
-
-
   }
 }
-
 // targeting img elements that will be on the page at some point
 $('.gallery').on('click','img',function(){
   console.log( $(this).attr("cardNum") )
 })
 
-
-
-  
-
-
+// $("home-button").click(function() {
+// cachedImages.sort()
+// })
 $clearButton.click(function() {
   if (confirm("Are you sure you want to free all of your Pok\u00E9mon?") == true) {
     localStorage.clear();
