@@ -12,7 +12,9 @@ img {
     justify-content: flex-start;
     align-items: center;
     align-content: center;
-    overflow: scroll;
+}
+div.gallery {
+        overflow: scroll;
 }
 
 
@@ -20,5 +22,8 @@ img {
 #button-box {
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
 
+=======
+>>>>>>> be2eb076797611e5166f7631cd4241d16544b5a5
 }
