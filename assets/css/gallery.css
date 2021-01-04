@@ -1,24 +1,32 @@
 
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* align-content: center; */
+}
+   
+div.gallery {
+    width: auto;
+    /* height: auto; */
+    max-height: 1000px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 20px 20px;
+}
+
 img {
     margin: 16px 16px;
     border-style: solid;
     border-radius: 10px;
 }
-
-.gallery{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    overflow: scroll;
+img.selectedIMG {
+    border: 6px dashed red;
 }
-   
 
 #button-box {
     display: flex;
     justify-content: center;
-    
-    
 }
