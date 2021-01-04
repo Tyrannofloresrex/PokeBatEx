@@ -74,7 +74,7 @@ var pokeTypesEffect = {
 generatePokemonAry();
 getPokemon();
 storePokemon();
-getWildPokeAPI();
+
 
 //TODO: battle button that starts the pokemon battle game.
 $("#battle-button").on("click", function(event){
