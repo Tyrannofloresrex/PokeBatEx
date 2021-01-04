@@ -7,11 +7,13 @@ img {
 .gallery{
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: row; */
+    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     align-content: center;
+    overflow: scroll;
 }
+   
 
 #button-box {
     display: flex;
