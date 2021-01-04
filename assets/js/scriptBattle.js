@@ -74,12 +74,16 @@ var pokeTypesEffect = {
 generatePokemonAry();
 getPokemon();
 storePokemon();
-
+$(".battle-arena").hide();
+$(".battle-arena-moves").hide();
+$(".battle-text").hide();
 //TODO: battle button that starts the pokemon battle game.
 $("#battle-button").on("click", function(event){
     event.preventDefault();
     $(".battle-home").hide();
-    $("#main-battle").show();
+    $(".battle-arena").show();
+    $(".battle-arena-moves").show();
+    $(".battle-text").show();   
 
     if (pickedPokemon.length === 0)
     {
@@ -366,6 +370,17 @@ function enableMoves(){
     $("#move3").attr('disabled', false);
     $("#move4").attr('disabled', false);
 }
+
+function checkHealth(){
+    if(userHealth === 0){
+        
+        window.location.replace("file:///C:/Users/Nolan/code/PokeBatEx/index.html");
+    }else if(wildHealth ===0){
+        window.location.replace("file:///C:/Users/Nolan/code/PokeBatEx/gallery.html");
+    }
+}
+
+
 //TODO: battle sequence function that is the core of the app that pulls from other functions
 
 //onclicks for move buttons 1-4 that will do damage based off of the typing
@@ -374,6 +389,7 @@ $("#move1").on("click", function(event){
     
     getDamageUser(moveType1)
     wildTurn();
+    checkHealth()
     // console.log(moveType1);
     // console.log(wildPokemonType[0])
     // console.log(pokeTypesEffect[moveType1][pokeTypes[wildPokemonType[0]]])
@@ -385,6 +401,7 @@ $("#move2").on("click", function(event){
     // console.log(moveType2);
     getDamageUser(moveType2)
     wildTurn();
+    checkHealth()
 });
 
 $("#move3").on("click", function(event){
@@ -392,6 +409,7 @@ $("#move3").on("click", function(event){
     // console.log(moveType3);
     getDamageUser(moveType3)
     wildTurn();
+    checkHealth()
 });
 
 $("#move4").on("click", function(event){
@@ -399,6 +417,7 @@ $("#move4").on("click", function(event){
     console.log(moveType4);
     getDamageUser(moveType4)
     wildTurn();
+    checkHealth()
 });
 
 
