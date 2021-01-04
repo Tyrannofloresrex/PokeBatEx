@@ -27,6 +27,7 @@ for (let i = 0; i < pokeNums.length; i++) {
        "src": data.cards[0].imageUrl,
        "cardNum": cardNum
       });
+        
       $(".gallery").append(apiImage);
       // cardNum is  the pokedex number and acts as a key that corresponds to the value, which is the image url.
       cachedImages[cardNum] = data.cards[0].imageUrl;
@@ -42,9 +43,12 @@ for (let i = 0; i < pokeNums.length; i++) {
     $(".gallery").append(caughtImage);
   }
 }
-// targeting img elements that will be on the page at some point
+
+// targeting img elements that will be on the page at some point, changing border color to indicate selected and logging
 $('.gallery').on('click','img',function(){
-  console.log( $(this).attr("cardNum") )
+  $('.selectedIMG').removeClass('selectedIMG');
+  $(this).addClass('selectedIMG');
+  console.log( $(this).attr("cardNum"));
 })
 
 // $("home-button").click(function() {
