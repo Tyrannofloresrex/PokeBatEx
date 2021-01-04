@@ -9,11 +9,11 @@ Colaborators
 * https://github.com/nolanstucky
 
 API used
-* 
-* 
+* https://pokemontcg.io/
+* https://pokeapi.co/
 
 User Story
-* 
+* We want a game to represent the battling function of Pokemon
 
 Acceptance Criteria
 * 
