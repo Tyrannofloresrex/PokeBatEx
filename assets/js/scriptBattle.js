@@ -75,7 +75,6 @@ generatePokemonAry();
 getPokemon();
 storePokemon();
 
-
 //TODO: battle button that starts the pokemon battle game.
 $("#battle-button").on("click", function(event){
     event.preventDefault();
