@@ -43,6 +43,7 @@ for (let i = 0; i < pokeNums.length; i++) {
     $(".gallery").append(caughtImage);
   }
 }
+
 // targeting img elements that will be on the page at some point, changing border color to indicate selected and logging
 $('.gallery').on('click','img',function(){
   $('.selectedIMG').removeClass('selectedIMG');
