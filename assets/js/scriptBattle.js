@@ -1,6 +1,7 @@
 var battleButton = $("#battle-button")
 var wildPokemon = []
 var caughtPokemon = []
+var pickedPokemon = []
 var wildPokemonSprite
 var wildPokemonType = []
 var userPokemonType = []
@@ -72,24 +73,37 @@ var pokeTypesEffect = {
 
 generatePokemonAry();
 getPokemon();
-getWildPokeAPI();
-getUserPokeAPI();
 storePokemon();
+getWildPokeAPI();
 
 //TODO: battle button that starts the pokemon battle game.
 $("#battle-button").on("click", function(event){
     event.preventDefault();
-    console.log("testing button")
     $(".battle-home").hide();
     $("#main-battle").show();
-});
 
+    if (pickedPokemon.length === 0)
+    {
+        getUserPokeAPI();
+        getWildPokeAPI();
+    }
+    
+});
+function removeUserPoke(wildPokeNum){
+    
+    for (var i = 0; i < wildPokemon.length; i++) {
+        if (wildPokemon[i] === wildPokeNum){
+            wildPokemon.splice(i, 1);
+        }
+    }
+}
 //TODO: function that accesses the Poke Api to assign random pokemon to the user array
 function getWildPokeAPI(){
     var wildNumber = wildPokemon[Math.floor(Math.random()*wildPokemon.length)];
-    console.log(wildNumber)
     let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${wildPokemon[wildNumber]}/`
-
+    removeUserPoke(wildNumber);
+    storePokemon();
+    getPokemon();
     $.ajax({
         url: pokeAPI,
         method: "GET"
@@ -169,16 +183,23 @@ function getUserPokeAPI(){
     caughtPokemon.push(userNumber);
     console.log(caughtPokemon);
     let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${wildPokemon[userNumber]}/`
-
+    removeUserPoke(userNumber);
+    storePokemon();
+    getPokemon();
     $.ajax({
         url: pokeAPI,
         method: "GET"
     }).then(function(response) {
-        console.log(response.moves[0].move.url)
-        moveName1 = response.moves[0].move.name;
-        moveName2 = response.moves[1].move.name;
-        moveName3 = response.moves[2].move.name;
-        moveName4 = response.moves[3].move.name;
+        console.log(response.moves)
+        var allUserMoves = response.moves;
+        var randomMove1 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove2 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove3 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove4 = Math.floor(Math.random()*allUserMoves.length);
+        moveName1 = response.moves[randomMove1].move.name;
+        moveName2 = response.moves[randomMove2].move.name;
+        moveName3 = response.moves[randomMove3].move.name;
+        moveName4 = response.moves[randomMove4].move.name;
         
         response.types.forEach(element => userPokemonType.push(element.type.name))
         userPokemonSprite = response.sprites.back_default;
@@ -239,12 +260,12 @@ function getUserPokeType4(){
 function generatePokemonAry(){
     wildPokemon = []
 
-    for (let i = 0; i < 899; i++) {
+    for (let i = 0; i < 809; i++) {
         wildPokemon.push(i);
         
     }
     return wildPokemon;
-
+    
 }
 
 function storePokemon(){
