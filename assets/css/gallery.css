@@ -14,11 +14,11 @@ img {
     align-content: center;
     overflow: scroll;
 }
-   
+
+
 
 #button-box {
     display: flex;
     justify-content: center;
-    
-    
+
 }
