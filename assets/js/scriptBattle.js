@@ -81,7 +81,7 @@ $("#battle-button").on("click", function(event){
     $(".battle-arena").show();
     $(".battle-arena-moves").show();
     $(".battle-text").show();   
-
+    
     if (pickedPokemon.length === 0)
     {
         getUserPokeAPI(wildPokemon);
@@ -357,9 +357,10 @@ function generateMoves(){
     $("#move3").text(moveName3)
     $("#move4").text(moveName4)
 }
-
-function userTurn(){
-
+generateBattleText();
+function generateBattleText(){
+    $(".battle-text").append($("<span> test </span>"))
+    $(".battle-text").append($("<span> test </span>"))
 }
 
 
@@ -371,9 +372,10 @@ function wildTurn(){
      
     
     console.log(randomWildMove)
-    
-    getDamageWild(randomWildMove)
-    enableMoves();
+    setTimeout(function(){
+        getDamageWild(randomWildMove)
+        enableMoves();
+    }, 2000);
 }
 
 function getDamageUser(userMove){
