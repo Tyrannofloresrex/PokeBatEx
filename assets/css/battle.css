@@ -9,32 +9,32 @@
     background-repeat: no-repeat;
     height: auto;
     width: auto; */
-};
+}
 .battle-home {
     display: flex;
     justify-content: center;
     align-items: center;
-};
+}
 #buttons {
     display: flex;
     justify-content: center; 
     margin-top: 100px;
-};
-marquee {
+}
+/* marquee {
     background-color: yellow;
     color: yellow;
-};
+} */
 #table {
     /* background: transparent; */
-};
+}
 .middle-image {
     display: flex;
     justify-content: center;
     /* background-size: cover; */
-};
+}
 #user-pokemon {
     /* transform: scale(1.1); */
-};
+}
 
 
 /* #user, #img, #wild {
