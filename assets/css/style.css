@@ -28,6 +28,7 @@ body {
     border-radius: 10%;
     width: 70vw;
     height: 35vh;
+<<<<<<< HEAD
 }
 
 @media screen and (max-width: 625px) {
@@ -38,3 +39,6 @@ body {
         color: rgb(246, 72, 29);
     }
 }
+=======
+};
+>>>>>>> development
