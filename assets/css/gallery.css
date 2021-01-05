@@ -1,22 +1,44 @@
+body{
+    background-color:black
+}
+.banner {
+    text-shadow: 7px 6px 4px rgb(32, 18, 224);
+}
+.title {
+    border-radius: 8px;
+    font-size: 18px;
+}
+#gallery-border {
+    background-color: white;
+    border-radius: 10%
+}
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://cutewallpaper.org/21/pokemon-background-gif/Dribbble-pokemon-template-poke-stop-test.gif-by-Rise-Vision.gif");
+    background-size: cover;
+    border-radius: 10%;
+}
+   
+div.gallery {
+    width: auto;
+    max-height: 1000px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 20px 20px;
+}
 
 img {
     margin: 16px 16px;
     border-style: solid;
     border-radius: 10px;
 }
-
-.gallery{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
+img.selectedIMG {
+    border: 6px dashed green;
 }
-div.gallery {
-        overflow: scroll;
-}
-   
 
 #button-box {
     display: flex;
