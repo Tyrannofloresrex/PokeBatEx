@@ -1,14 +1,25 @@
 /* html, body, pre, code, kbd, samp {
     font-family: "Press+Start+2P";
 }; */
+body {
+    background-image: url(../images/pokemon-starting-screen-finished.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    justify-content: center;
+    /* margin: 185px 100px; */
+};
 
 .content {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 100px 100px;
+    /* margin: 185px 100px; */
+    
+
 };
 .content div {
     width: 50vw;
     height: 35vh;
 };
+@media
