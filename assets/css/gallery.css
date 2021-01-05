@@ -18,7 +18,7 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-image: url("https://cutewallpaper.org/21/pokemon-background-gif/Dribbble-pokemon-template-poke-stop-test.gif-by-Rise-Vision.gif");
+    background-image: url(/assets/images/Dribbble-pokemon-template-poke-stop-test.gif-by-Rise-Vision.gif);
     background-size: cover;
     border-radius: 10%;
 }
