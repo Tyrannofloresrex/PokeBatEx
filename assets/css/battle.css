@@ -64,6 +64,8 @@ body {
     margin-bottom: 5px;
 }
 
+
+
 @media screen and (max-width: 625px) {
     #main-battle {
         width: 100vw;
