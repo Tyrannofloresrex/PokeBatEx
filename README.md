@@ -36,3 +36,6 @@
 
 ## Link to Deployed GITHUB
 * https://tyrannofloresrex.github.io/PokeBatEx/
+
+## Credits
+* BIG thanks to Nintendo
