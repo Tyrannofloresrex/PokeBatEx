@@ -30,6 +30,15 @@
 * WHEN the user HP is depleted
 * THEN the Home screen is shown and you lose your current character
 
+* HOME SS
+![home ss](https://github.com/Tyrannofloresrex/PokeBatEx/blob/development/assets/images/Screen%20Shot%202021-01-05%20at%2010.20.57%20AM.png?raw=true)
+
+* GALLERY SS
+![gallery ss](https://github.com/Tyrannofloresrex/PokeBatEx/blob/development/assets/images/Screen%20Shot%202021-01-05%20at%2010.23.06%20AM.png?raw=true)
+
+* BATTLE SS
+![battle ss](https://github.com/Tyrannofloresrex/PokeBatEx/blob/development/assets/images/Screen%20Shot%202021-01-05%20at%2010.24.41%20AM.png?raw=true)
+
 ## Description
 * This game is designed to show the battling function of Pok&ecutemon. 
 * This game will help familiarize user with names and typing of moves.
