@@ -12,7 +12,7 @@ body{
 /* Gallery styles */
 #gallery-border {
     background-color: white;
-    border-radius: 10%
+    border-radius: 5%;
 }
 .gallery{
     display: flex;
@@ -22,8 +22,9 @@ body{
     align-items: center;
     background-image: url(/assets/images/Dribbble-pokemon-template-poke-stop-test.gif-by-Rise-Vision.gif);
     background-size: cover;
-    border-radius: 10%;
+    border-radius: 12%;
     background-position: center center;
+    
 }
    
 div.gallery {
@@ -46,11 +47,14 @@ img.selectedIMG {
 #button-box {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    /* max-width: 100%; */
 }
 
  .menu-button {
     display: flex;
     align-items: center;
+    max-width: 100%;
 }
 
 @media screen and (max-width: 768px) {
