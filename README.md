@@ -31,7 +31,7 @@
 * THEN the Home screen is shown and you lose your current character
 
 * HOME SS
-! [home ss] ()
+! [home ss] (https://github.com/Tyrannofloresrex/PokeBatEx/blob/development/assets/images/Screen%20Shot%202021-01-05%20at%2010.20.57%20AM.png?raw=true)
 
 * GALLERY SS
 ! [gallery ss] ()
