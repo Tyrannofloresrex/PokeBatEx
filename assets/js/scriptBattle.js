@@ -29,6 +29,7 @@ var wildMoveType1;
 var wildMoveType2;
 var wildMoveType3;
 var wildMoveType4;
+
 var TYPES = ["normal", "fire", "water", "electric", "grass", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel"];
 var pokeTypes = {
     normal: 0,
@@ -70,29 +71,37 @@ var pokeTypesEffect = {
   steel: [1, 0.5, 0.5, 0.5, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0.5, 2],
   fairy: [1, 0.5, 1, 1, 1, 1, 2, 0.5, 1, 1, 1, 1, 1, 1, 2, 2, 0.5, 1],
 };
-
-generatePokemonAry();
-getPokemon();
-storePokemon();
-$(".battle-arena").hide();
-$(".battle-arena-moves").hide();
-$(".battle-text").hide();
-//TODO: battle button that starts the pokemon battle game.
+//calls upon loadpage function to load the page.
+loadPage();
+console.log(pickedPokemon);
+// battle button that starts the pokemon battle game.
 $("#battle-button").on("click", function(event){
     event.preventDefault();
     $(".battle-home").hide();
     $(".battle-arena").show();
     $(".battle-arena-moves").show();
     $(".battle-text").show();   
-
+    
     if (pickedPokemon.length === 0)
     {
-        getUserPokeAPI();
+        getUserPokeAPI(wildPokemon);
+        getWildPokeAPI();
+    } else {
+        getUserPickedPokeAPI(pickedPokemon);
         getWildPokeAPI();
     }
     
 });
-function removeUserPoke(wildPokeNum){
+//this is the function that loads the page making the game ready when the battle button is clicked
+function loadPage(){
+    generatePokemonAry();
+    getPokemon();
+    storePokemon();
+    $(".battle-arena").hide();
+    $(".battle-arena-moves").hide();
+    $(".battle-text").hide();
+}
+function removeWildPoke(wildPokeNum){
     
     for (var i = 0; i < wildPokemon.length; i++) {
         if (wildPokemon[i] === wildPokeNum){
@@ -100,11 +109,12 @@ function removeUserPoke(wildPokeNum){
         }
     }
 }
-//TODO: function that accesses the Poke Api to assign random pokemon to the user array
+//function that accesses the Poke Api to assign random pokemon to the user array
 function getWildPokeAPI(){
     var wildNumber = wildPokemon[Math.floor(Math.random()*wildPokemon.length)];
     let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${wildPokemon[wildNumber]}/`
-    removeUserPoke(wildNumber);
+    caughtPokemon.push(wildPokemon[wildNumber]);
+    removeWildPoke(wildNumber);
     storePokemon();
     getPokemon();
     $.ajax({
@@ -112,10 +122,15 @@ function getWildPokeAPI(){
         method: "GET"
     }).then(function(response) {
         // console.log(response)
-        wildMoveName1 = response.moves[0].move.name;
-        wildMoveName2 = response.moves[1].move.name;
-        wildMoveName3 = response.moves[2].move.name;
-        wildMoveName4 = response.moves[3].move.name;
+        var allWildMoves = response.moves;
+        var randomMove1 = Math.floor(Math.random()*allWildMoves.length);
+        var randomMove2 = Math.floor(Math.random()*allWildMoves.length);
+        var randomMove3 = Math.floor(Math.random()*allWildMoves.length);
+        var randomMove4 = Math.floor(Math.random()*allWildMoves.length);
+        wildMoveName1 = response.moves[randomMove1].move.name;
+        wildMoveName2 = response.moves[randomMove2].move.name;
+        wildMoveName3 = response.moves[randomMove3].move.name;
+        wildMoveName4 = response.moves[randomMove4].move.name;
         
         response.types.forEach(element => wildPokemonType.push(element.type.name))
         wildPokemonSprite = response.sprites.front_default;
@@ -180,13 +195,43 @@ function getWildPokeType4(){
         wildMoves.push(wildMoveType4)
     })
 }
+function getUserPickedPokeAPI(pokemon){
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
+    $.ajax({
+        url: pokeAPI,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response.moves)
+        var allUserMoves = response.moves;
+        var randomMove1 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove2 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove3 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove4 = Math.floor(Math.random()*allUserMoves.length);
+        moveName1 = response.moves[randomMove1].move.name;
+        moveName2 = response.moves[randomMove2].move.name;
+        moveName3 = response.moves[randomMove3].move.name;
+        moveName4 = response.moves[randomMove4].move.name;
+        
+        response.types.forEach(element => userPokemonType.push(element.type.name))
+        userPokemonSprite = response.sprites.back_default;
+        generatePokemonUser();
+        generateMoves();
+        getUserPokeType1();
+        getUserPokeType2();
+        getUserPokeType3();
+        getUserPokeType4();
+        
+    })
+}
 //Function that accesses the Poke Api to assign random pokemon to the user array
-function getUserPokeAPI(){
-    var userNumber = wildPokemon[Math.floor(Math.random()*wildPokemon.length)];
+function getUserPokeAPI(pokemon){
+    var userNumber = pokemon[Math.floor(Math.random()*pokemon.length)];
+    localStorage.setItem('picked pokemon', JSON.stringify(userNumber));
+    console.log(userNumber)
     caughtPokemon.push(userNumber);
     console.log(caughtPokemon);
-    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${wildPokemon[userNumber]}/`
-    removeUserPoke(userNumber);
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${pokemon[userNumber]}/`
+    removeWildPoke(userNumber);
     storePokemon();
     getPokemon();
     $.ajax({
@@ -263,7 +308,7 @@ function getUserPokeType4(){
 function generatePokemonAry(){
     wildPokemon = []
 
-    for (let i = 0; i < 809; i++) {
+    for (let i = 0; i < 493; i++) {
         wildPokemon.push(i);
         
     }
@@ -277,11 +322,12 @@ function storePokemon(){
 }
 
 function getPokemon(){
-
+    var storedPickedPokemon = JSON.parse(localStorage.getItem("picked pokemon"));
     var storedWildPokemon = JSON.parse(localStorage.getItem("wild pokemon"));
     var storedCaughtPokemon = JSON.parse(localStorage.getItem("caught pokemon"));
 
     if (storedCaughtPokemon !==null){
+        pickedPokemon = storedPickedPokemon; 
         wildPokemon = storedWildPokemon;
         caughtPokemon = storedCaughtPokemon;
     }
@@ -311,9 +357,10 @@ function generateMoves(){
     $("#move3").text(moveName3)
     $("#move4").text(moveName4)
 }
-
-function userTurn(){
-
+generateBattleText();
+function generateBattleText(){
+    $(".battle-text").append($("<span> test </span>"))
+    $(".battle-text").append($("<span> test </span>"))
 }
 
 
@@ -325,16 +372,13 @@ function wildTurn(){
      
     
     console.log(randomWildMove)
-    
-    getDamageWild(randomWildMove)
-    enableMoves();
+    setTimeout(function(){
+        getDamageWild(randomWildMove)
+        enableMoves();
+    }, 2000);
 }
 
 function getDamageUser(userMove){
-//    var damage1 =  pokeTypesEffect[testvariable][pokeTypes[wildPokemonType[0]]]
-//    var damage2 =  pokeTypesEffect[testvariable][pokeTypes[wildPokemonType[1]]]
-//    var multiplier = damage1 + damage2;
-//    console.log(multiplier)
     damage = 10;
     for (var i = 0; i < wildPokemonType.length; i++) {
             var multiplier = pokeTypesEffect[userMove][pokeTypes[wildPokemonType[i]]]
@@ -372,16 +416,15 @@ function enableMoves(){
 }
 
 function checkHealth(){
-    if(userHealth === 0){
-        
-        window.location.replace("file:///C:/Users/Nolan/code/PokeBatEx/index.html");
-    }else if(wildHealth ===0){
-        window.location.replace("file:///C:/Users/Nolan/code/PokeBatEx/gallery.html");
+    if(userHealth <= 0){
+        window.location.replace("http://127.0.0.1:5500/index.html");
+    }else if(wildHealth <= 0){
+        window.location.replace("http://127.0.0.1:5500/gallery.html");
     }
 }
 
 
-//TODO: battle sequence function that is the core of the app that pulls from other functions
+// battle sequence function that is the core of the app that pulls from other functions
 
 //onclicks for move buttons 1-4 that will do damage based off of the typing
 $("#move1").on("click", function(event){

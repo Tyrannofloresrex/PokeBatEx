@@ -3,7 +3,7 @@ var pokeNums = JSON.parse(localStorage.getItem("caught pokemon"));
 var $gallery = $(".gallery");
 var cachedImages = JSON.parse(localStorage.getItem("cachedImages")) || [];
 var $clearButton = $("#clear-button");
-
+var pickedPokemon = []
 pokeNums.sort()
 // loops through pokedex numbers in storedcaughtPokemon array, fetches data from API based on number, returns URL img value and appends to page.
 for (let i = 0; i < pokeNums.length; i++) {
@@ -46,6 +46,10 @@ for (let i = 0; i < pokeNums.length; i++) {
 
 // targeting img elements that will be on the page at some point, changing border color to indicate selected and logging
 $('.gallery').on('click','img',function(){
+  console.log( $(this).attr("cardNum") )
+  pickedPokemon = $(this).attr("cardNum");
+  localStorage.setItem('picked pokemon', JSON.stringify(pickedPokemon));
+  console.log(pickedPokemon);
   $('.selectedIMG').removeClass('selectedIMG');
   $(this).addClass('selectedIMG');
   console.log( $(this).attr("cardNum"));
@@ -61,3 +65,4 @@ $clearButton.click(function() {
   } else {
   };
 })
+
