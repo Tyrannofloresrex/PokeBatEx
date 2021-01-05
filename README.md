@@ -30,6 +30,15 @@
 * WHEN the user HP is depleted
 * THEN the Home screen is shown and you lose your current character
 
+* HOME SS
+! [home ss] ()
+
+* GALLERY SS
+! [gallery ss] ()
+
+* BATTLE SS
+! [battle ss] ()
+
 ## Description
 * This game is designed to show the battling function of Pok&ecutemon. 
 * This game will help familiarize user with names and typing of moves.

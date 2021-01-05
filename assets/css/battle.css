@@ -63,6 +63,9 @@ body {
 .topBtns {
     margin-bottom: 5px;
 }
+.end-text {
+    color: rgb(246, 72, 29)
+}
 
 
 
@@ -72,5 +75,9 @@ body {
     }
     .column{
         width: 50%;
+    }
+    #user, #wild {
+        padding: 0 0;
+        width: 33vw;
     }
 }
