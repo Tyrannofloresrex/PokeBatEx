@@ -26,7 +26,7 @@ for (let i = 0; i < pokeNums.length; i++) {
       apiImage.attr({
        "src": data.cards[0].imageUrl,
        "cardNum": cardNum,
-       "loading":lazy,
+      //  "loading":lazy,
       });
         
       $(".gallery").append(apiImage);
@@ -49,7 +49,7 @@ for (let i = 0; i < pokeNums.length; i++) {
 $('.gallery').on('click','img',function(){
   console.log( $(this).attr("cardNum") )
   pickedPokemon = $(this).attr("cardNum");
-  localStorage.setItem('picked pokemon', JSON.stringify(pickedPokemon));
+  localStorage.setItem('picked pokemon', JSON.parse(pickedPokemon));
   console.log(pickedPokemon);
   $('.selectedIMG').removeClass('selectedIMG');
   $(this).addClass('selectedIMG');

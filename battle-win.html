@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pok&eacutemon Battle Experience</title>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/battle.css">
@@ -13,83 +13,69 @@
 <body>
     <!-- pseudo code battle screen!! -->
     <!-- header> BATTLE! <header -->
-    <marquee behavior="scroll" direction="left" class="banner" style="color: rgb(97, 144, 245);"><span><i class="nes-pokeball"></i></span><font size="12"> Gotta Catch 'Em All! </font><span><i class="nes-pokeball"></i></span></marquee>
-    
-    <div class="content">
-        
-        <div class="nes-container with-title is-centered" id="main-battle" style="background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2f4d65dd-57b0-4a37-8df3-f4c2c7f98c60/d50ccqa-f9ee059b-27f8-4ea2-a55f-ff9573fa53c0.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMmY0ZDY1ZGQtNTdiMC00YTM3LThkZjMtZjRjMmM3Zjk4YzYwXC9kNTBjY3FhLWY5ZWUwNTliLTI3ZjgtNGVhMi1hNTVmLWZmOTU3M2ZhNTNjMC5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.OqTLUStwiJLBYItALH3QbaXpvnTvhKmN0zUleG9W3BI); background-size: cover; background-repeat: no-repeat;">
-            <p class="title">Pok&eacutemon Battle Experience</p> 
-            <div class="nes-table-responsive">
-                <div class="battle-arena">
-                <table class="nes-table is-bordered is-centered" style="background-color:rgba(0, 0, 0, 0);">
-                    <tbody>
-                        <tr>
-                            <td id="table">
-                                <div class="nes-container with-title is-centered" style="background-color: white;">
-                                <p id="user-name"></p>
-                                <progress class="nes-progress is-primary" value="100" max="100" id = "user-health"></progress>
-                                <label for="wildProgress">HP:</label>
-                                <p id="user-pokemon"></p>
-                                </div>
-                            </td>
-                            <td>
-                                <img src="https://i.postimg.cc/JhrkRkxR/Screen-Shot-2020-12-29-at-8-18-21-PM.png" alt="miggle-image" class="middle-image">
-                            </td>
-                            <td>
-                                <div class="nes-container with-title is-centered" style="background-color: white;">
-                                <p id="wild-pokemon"></p>
-                                <label for="wildProgress">HP:</label>
-                                <progress class="nes-progress is-primary" value="100" max="100" id="wild-health">HP:</progress>
-                                <p id="wild-name"></p>
-                                </div>
-                            </td>
-                        </tr> 
-                </table>
-                </div>
-                <div class="nes-container battle-text" style="margin-top: 15px;" id="textBox">
-                
-                </div>
-                <div class="buttons battle-arena-moves" style="margin-top: 15px;">
-                    <div class="nes-container with-title is-centered" id="buttons">
-                        <p class="title" style="background: transparent; color: white; font-size: xx-large;">Choose Your Move!</p>
-                        <div class="topBtns">
-                            <button type="button" class="nes-btn is-primary" id="move1"></button>
-                            <button type="button" class="nes-btn is-success" id="move2"></button>
+    <marquee behavior="scroll" direction="left" id="banner"><span><i class="nes-pokeball"></i></span>
+        <font size="12"> Gotta Catch 'Em All! </font><span><i class="nes-pokeball"></i></span>
+    </marquee>
+    <div class="nes-container with-title is-centered" id="content">
+        <div class="nes-container with-title is-centered" id="main-battle">
+            <div id="endBox">
+                <p class="nes-balloon from-left nes-pointer end-text">
+                    
+                </p>
+            </div>
+            <div class="nes-container with-title is-centered" id="table">
+                <div class="row battle-arena">
+                    <div class="column" id="user-col">
+                        <div class="nes-container with-title is-centered" id="user">
+                            <p id="user-name"></p>
+                            <progress class="nes-progress is-primary" value="100" max="100" id="user-health"></progress>
+                            <label for="wildProgress">HP:</label>
+                            <p id="user-pokemon"></p>
                         </div>
-                        <div class="bottomBtns" style="margin-top: 5px;">
-                            <button type="button" class="nes-btn is-warning" id="move3"></button>
-                            <button type="button" class="nes-btn is-error" id="move4"></button>
+                    </div>
+                    <div class="column" id="clashColumn">
+                        VS
+                    </div>
+                    <div class="column" id="wild-col">
+                        <div class="nes-container with-title is-centered" id="wild">
+                            <p id="wild-pokemon"></p>
+                            <label for="wildProgress">HP:</label>
+                            <progress class="nes-progress is-primary" value="100" max="100"
+                                id="wild-health">HP:</progress>
+                            <p id="wild-name"></p>
                         </div>
                     </div>
                 </div>
-                <div class="battle-home" style="margin-top: 15px;">
-                    <div class="nes-container with-title is-centered">
-                        <a class="nes-btn" href="#" id="battle-button">Battle!</a>
-                        <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
+            </div>
+            <div id="battleBox">
+                <p class="nes-balloon from-left nes-pointer battle-text">
+                    This is not a clickable element, but it's an area of the pointer.
+                </p>
+            </div>
+            <div class="buttons battle-arena-moves">
+                <div class="nes-container with-title is-centered" id="buttons">
+                    <div class="topBtns">
+                        <button type="button" class="nes-btn" id="move1"></button>
+                        <button type="button" class="nes-btn" id="move2"></button>
                     </div>
+                    <div class="bottomBtns">
+                        <button type="button" class="nes-btn" id="move3"></button>
+                        <button type="button" class="nes-btn" id="move4"></button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="nes-container with-title is-centered" id="battle-home">
+                    <a class="nes-btn" href="#" id="battle-button">Battle!</a>
+                    <a class="nes-btn is-primary" href="index.html" id="gallery-button">Home</a>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
-   
-   
-    <!-- container div -->
-    <!-- opponent div -->
-    <!-- left: poke name, poke health -->
-    <!-- right: poke sprite front -->
-    
-    <!-- player div -->
-    <!-- left: poke sprite back -->
-    
-    <!-- right: poke name, poke health -->
-
-    <!-- option box div -->
-    <!-- move1 button -->
-    <!-- move2 button -->
-    <!-- move3 button -->
-    <!-- move4 button -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="assets/js/scriptBattle.js"></script>
 </body>
 
