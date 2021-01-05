@@ -1,10 +1,12 @@
 var battleButton = $("#battle-button")
 var wildPokemon = []
 var caughtPokemon = []
-var pickedPokemon = []
+var pickedPokemon = 0;
 var wildPokemonSprite
 var wildPokemonType = []
 var userPokemonType = []
+var wildPokeName
+var userPokeName
 var wildMoves = []
 var wildHealth = 100;
 var userHealth = 100;
@@ -82,8 +84,9 @@ $("#battle-button").on("click", function(event){
     $(".battle-arena-moves").show();
     $(".battle-text").show();   
     
-    if (pickedPokemon.length === 0)
+    if (pickedPokemon === 0)
     {
+        console.log("this is a fucking test")
         getUserPokeAPI(wildPokemon);
         getWildPokeAPI();
     } else {
@@ -94,12 +97,17 @@ $("#battle-button").on("click", function(event){
 });
 //this is the function that loads the page making the game ready when the battle button is clicked
 function loadPage(){
+    
     generatePokemonAry();
     getPokemon();
     storePokemon();
     $(".battle-arena").hide();
     $(".battle-arena-moves").hide();
     $(".battle-text").hide();
+
+    if (wildPokemon !== null){
+        console.log("YOU NEED TO CATCH")
+    }
 }
 function removeWildPoke(wildPokeNum){
     
@@ -112,8 +120,11 @@ function removeWildPoke(wildPokeNum){
 //function that accesses the Poke Api to assign random pokemon to the user array
 function getWildPokeAPI(){
     var wildNumber = wildPokemon[Math.floor(Math.random()*wildPokemon.length)];
-    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${wildPokemon[wildNumber]}/`
-    caughtPokemon.push(wildPokemon[wildNumber]);
+    console.log("test 1 " + wildNumber)
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${wildNumber}/`
+    console.log(wildPokemon)
+    console.log("test 2 " + pokeAPI)
+    caughtPokemon.push(wildNumber);
     removeWildPoke(wildNumber);
     storePokemon();
     getPokemon();
@@ -122,6 +133,7 @@ function getWildPokeAPI(){
         method: "GET"
     }).then(function(response) {
         // console.log(response)
+        wildPokeName = response.name;
         var allWildMoves = response.moves;
         var randomMove1 = Math.floor(Math.random()*allWildMoves.length);
         var randomMove2 = Math.floor(Math.random()*allWildMoves.length);
@@ -201,7 +213,8 @@ function getUserPickedPokeAPI(pokemon){
         url: pokeAPI,
         method: "GET"
     }).then(function(response) {
-        console.log(response.moves)
+        
+        userPokeName = response.name;
         var allUserMoves = response.moves;
         var randomMove1 = Math.floor(Math.random()*allUserMoves.length);
         var randomMove2 = Math.floor(Math.random()*allUserMoves.length);
@@ -226,11 +239,12 @@ function getUserPickedPokeAPI(pokemon){
 //Function that accesses the Poke Api to assign random pokemon to the user array
 function getUserPokeAPI(pokemon){
     var userNumber = pokemon[Math.floor(Math.random()*pokemon.length)];
+    console.log("user pokemon test " + userNumber)
     localStorage.setItem('picked pokemon', JSON.stringify(userNumber));
     console.log(userNumber)
     caughtPokemon.push(userNumber);
     console.log(caughtPokemon);
-    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${pokemon[userNumber]}/`
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${userNumber}/`
     removeWildPoke(userNumber);
     storePokemon();
     getPokemon();
@@ -238,7 +252,8 @@ function getUserPokeAPI(pokemon){
         url: pokeAPI,
         method: "GET"
     }).then(function(response) {
-        console.log(response.moves)
+        
+        userPokeName = response.name;
         var allUserMoves = response.moves;
         var randomMove1 = Math.floor(Math.random()*allUserMoves.length);
         var randomMove2 = Math.floor(Math.random()*allUserMoves.length);
@@ -308,7 +323,7 @@ function getUserPokeType4(){
 function generatePokemonAry(){
     wildPokemon = []
 
-    for (let i = 0; i < 493; i++) {
+    for (let i = 1; i < 10; i++) {
         wildPokemon.push(i);
         
     }
@@ -317,6 +332,7 @@ function generatePokemonAry(){
 }
 
 function storePokemon(){
+    
     localStorage.setItem('wild pokemon', JSON.stringify(wildPokemon));
     localStorage.setItem('caught pokemon', JSON.stringify(caughtPokemon));
 }
@@ -357,14 +373,60 @@ function generateMoves(){
     $("#move3").text(moveName3)
     $("#move4").text(moveName4)
 }
-generateBattleText();
-function generateBattleText(){
-    $(".battle-text").append($("<span> test </span>"))
-    $(".battle-text").append($("<span> test </span>"))
+
+function genBattSuperEffective(pokeName, moveName){
+    pokemonName = pokeName;
+    pokeMoveName = moveName;
+    $(".battle-text").append($(`<span> ${pokemonName} </span>`))
+    $(".battle-text").append($(`<span> used </span>`))
+    $(".battle-text").append($(`<span> ${pokeMoveName}! </span>`))
+    $(".battle-text").append($(`<span> It </span>`))
+    $(".battle-text").append($(`<span> was </span>`))
+    $(".battle-text").append($(`<span> super </span>`))
+    $(".battle-text").append($(`<span> effective! </span>`))
 }
 
+function genBattEffective(pokeName, moveName){
+    pokemonName = pokeName;
+    pokeMoveName = moveName;
+    $(".battle-text").append($(`<span> ${pokemonName} </span>`))
+    $(".battle-text").append($(`<span> used </span>`))
+    $(".battle-text").append($(`<span> ${pokeMoveName}! </span>`))
+    $(".battle-text").append($(`<span> It </span>`))
+    $(".battle-text").append($(`<span> was </span>`))
+    $(".battle-text").append($(`<span> effective! </span>`))
+}
 
-function wildTurn(){
+function genBattNonEffective(pokeName, moveName){
+    pokemonName = pokeName;
+    pokeMoveName = moveName;
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> ${pokemonName} </span>`))
+    }, 25);
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> used </span>`))
+    }, 50);
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> ${pokeMoveName}! </span>`))
+    }, 75);
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> It </span>`))
+    }, 100);
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> was </span>`))
+    }, 125);
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> not </span>`))
+    }, 150);  
+    setTimeout(function(){  
+    $(".battle-text").append($(`<span> very </span>`))
+    }, 175);
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> effective! </span>`))
+    }, 200);
+}
+
+function wildTurn(wildMoveName){
     var randomNum = Math.floor(Math.random()*4);
     
     console.log(wildMoves)
@@ -374,11 +436,12 @@ function wildTurn(){
     console.log(randomWildMove)
     setTimeout(function(){
         getDamageWild(randomWildMove)
+        wildButtonText(wildPokeName, wildMoveName)
         enableMoves();
     }, 2000);
 }
 
-function getDamageUser(userMove){
+function getDamageUser(userMove, userMoveName){
     damage = 10;
     for (var i = 0; i < wildPokemonType.length; i++) {
             var multiplier = pokeTypesEffect[userMove][pokeTypes[wildPokemonType[i]]]
@@ -386,6 +449,15 @@ function getDamageUser(userMove){
             
     }
     console.log(damage)
+    $(".battle-text").empty();
+    if (damage > 10){
+        genBattSuperEffective(userPokeName, userMoveName);
+    }else if (damage < 10){
+        genBattNonEffective(userPokeName, userMoveName);
+    }else if (damage = 10){
+        genBattEffective(userPokeName, userMoveName);
+    }
+
     wildHealth = wildHealth - damage;
     $("#wild-health").val(wildHealth);
     disableMoves();
@@ -399,6 +471,17 @@ function getDamageWild(wildMove){
     }
     userHealth = userHealth - damage;
     $("#user-health").val(userHealth);
+}
+
+function wildButtonText(wildPokemonName, wildMoveName){
+    $(".battle-text").empty();
+    if (damage > 10){
+        genBattSuperEffective(wildPokemonName, wildMoveName);
+    }else if (damage < 10){
+        genBattNonEffective(wildPokemonName, wildMoveName);
+    }else if (damage = 10){
+        genBattEffective(wildPokemonName, wildMoveName);
+    }
 }
 
 function disableMoves(){
@@ -429,8 +512,8 @@ function checkHealth(){
 //onclicks for move buttons 1-4 that will do damage based off of the typing
 $("#move1").on("click", function(event){
     event.preventDefault();
-    
-    getDamageUser(moveType1)
+    getDamageUser(moveType1, moveName1);
+
     wildTurn();
     checkHealth()
     // console.log(moveType1);
@@ -442,7 +525,7 @@ $("#move1").on("click", function(event){
 $("#move2").on("click", function(event){
     event.preventDefault();
     // console.log(moveType2);
-    getDamageUser(moveType2)
+    getDamageUser(moveType2, moveName2);
     wildTurn();
     checkHealth()
 });
@@ -450,7 +533,7 @@ $("#move2").on("click", function(event){
 $("#move3").on("click", function(event){
     event.preventDefault();
     // console.log(moveType3);
-    getDamageUser(moveType3)
+    getDamageUser(moveType3, moveName3);
     wildTurn();
     checkHealth()
 });
@@ -458,7 +541,7 @@ $("#move3").on("click", function(event){
 $("#move4").on("click", function(event){
     event.preventDefault();
     console.log(moveType4);
-    getDamageUser(moveType4)
+    getDamageUser(moveType4, moveName4);
     wildTurn();
     checkHealth()
 });
