@@ -79,7 +79,7 @@ console.log(pickedPokemon);
 // battle button that starts the pokemon battle game.
 $("#battle-button").on("click", function(event){
     event.preventDefault();
-    $(".battle-home").hide();
+    $("#battle-home").hide();
     $(".battle-arena").show();
     $(".battle-arena-moves").show();
     $(".battle-text").show();   

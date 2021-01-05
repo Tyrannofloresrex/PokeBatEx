@@ -22,10 +22,11 @@ for (let i = 0; i < pokeNums.length; i++) {
       var apiImage = $("<img>");
 
       // $('.gallery').append(`<div><img src='${imageURL}'><span>${cadNum}</span></div>`)
-
+  
       apiImage.attr({
        "src": data.cards[0].imageUrl,
-       "cardNum": cardNum
+       "cardNum": cardNum,
+       "loading":lazy,
       });
         
       $(".gallery").append(apiImage);

@@ -2,40 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
-
-    <!-- pseudo code homepage!! -->
-    <!-- homescreen background with header/title of game done-krw-->
-    <marquee behavior="scroll" direction="left" class="banner" style="color: rgb(97, 144, 245);"><span><i class="nes-pokeball"></i></span><font size="12"> Gotta Catch 'Em All! </font><span><i class="nes-pokeball"></i></span></marquee>
-   
-    <div class="content">
-    
-        <div class="nes-container with-title is-centered" id="container">
+<body class="nes-container with-title is-centered">
+  <marquee behavior="scroll" direction="left" class="banner"><span><i class="nes-pokeball"></i></span>
+    <font size="12"> Gotta Catch 'Em All! </font><span><i class="nes-pokeball"></i></span>
+  </marquee>
+  <div class="nes-container with-title is-centered" id="test">
+    <div class="nes-container with-title is-centered" id="content">
+      <div class="nes-container with-title is-centered" id="container">
         <p class="title">Pok&eacutemon Battle Experience</p>
-        <div class="lists">
-            <ul class="nes-list is-circle">
-              <li>Click <span style="font-style: italic;">"Start!"</span> to begin catching Pok&eacutemon!</li>
-              <li>Click <span style="font-style: italic;">"Gallery"</span> to view caught Pok&eacutemon!</li>
-            </ul>
-          </div>
+          <ul class="nes-list is-circle">
+            <li>Click <span style="font-style: italic;">"Start!"</span> to begin catching Pok&eacutemon!</li>
+            <li>Click <span style="font-style: italic;">"Gallery"</span> to view caught Pok&eacutemon!</li>
+          </ul>
         <a class="nes-btn" href="battle-win.html">Start!</a>
         <a class="nes-btn is-primary" href="gallery.html" id="gallery-button">Gallery</a>
       </div>
-        
-
-
     </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    
 </body>
 
 </html>

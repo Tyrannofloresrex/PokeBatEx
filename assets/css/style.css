@@ -1,25 +1,41 @@
-/* html, body, pre, code, kbd, samp {
-    font-family: "Press+Start+2P";
-}; */
 body {
+    background: black;
+}
+
+#test {
+    border-radius: 10%;
     background-image: url(../images/pokemon-starting-screen-finished.gif);
     background-repeat: no-repeat;
     background-size: cover;
     display: block;
     justify-content: center;
-    /* margin: 185px 100px; */
-};
+    background-position: center center;
+    box-shadow: 1px 8px 10px 1px white;
+}
 
-.content {
+.banner {
+    color: rgb(233, 236, 45);
+    text-shadow: 7px 6px 4px rgb(32, 18, 224);
+}
+
+#content {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin: 185px 100px; */
-    
-
-};
-.content div {
-    width: 50vw;
+    margin: 185px auto;
+    border-style: none;
+}
+#container {
+    border-radius: 10%;
+    width: 70vw;
     height: 35vh;
-};
-@media
+}
+
+@media screen and (max-width: 625px) {
+    #container {
+        border-style: none;
+    }
+    li {
+        color: rgb(246, 72, 29);
+    }
+}
