@@ -5,6 +5,8 @@ var pickedPokemon = 0;
 var wildPokemonSprite
 var wildPokemonType = []
 var userPokemonType = []
+var wildNumber 
+var allWildMoveNames
 var wildPokeName
 var userPokeName
 var wildMoves = []
@@ -53,6 +55,27 @@ var pokeTypes = {
     steel: 16,
     fairy: 17,
 };
+var pokeColor = {
+    normal: '#AAB09F',
+    fire: '#EA7A3C',
+    water: '#539AE2',
+    electric: '#E5C531',
+    grass: '#71C558',
+    ice: '#70CBD4',
+    fighting: '#CB5F48',
+    poison: '#B468B7',
+    ground: '#CC9F4F',
+    flying: '#7DA6DE',
+    psychic: '#E5709B',
+    bug: '#94BC4A',
+    rock: '#B2A061',
+    ghost: '#846AB6',
+    dragon: '#6A7BAF',
+    dark: '#736C75',
+    steel: '#89A1B0',
+    fairy: '#E397D1',
+}
+console.log(pokeColor.fire)
 var pokeTypesEffect = {
   normal: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0, 1, 1, 0.5, 1],
   fire: [1, 0.5, 0.5, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5, 1, 2, 1],
@@ -73,6 +96,7 @@ var pokeTypesEffect = {
   steel: [1, 0.5, 0.5, 0.5, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0.5, 2],
   fairy: [1, 0.5, 1, 1, 1, 1, 2, 0.5, 1, 1, 1, 1, 1, 1, 2, 2, 0.5, 1],
 };
+
 //calls upon loadpage function to load the page.
 loadPage();
 console.log(pickedPokemon);
@@ -80,13 +104,15 @@ console.log(pickedPokemon);
 $("#battle-button").on("click", function(event){
     event.preventDefault();
     $("#battle-home").hide();
+    $("#battleBox").show();
     $(".battle-arena").show();
     $(".battle-arena-moves").show();
-    $(".battle-text").show();   
+    $(".battle-text").hide();   
     
-    if (pickedPokemon === 0)
+    if (pickedPokemon === -1)
     {
-        console.log("this is a fucking test")
+        window.location.replace("https://tyrannofloresrex.github.io/PokeBatEx/gallery.html");
+    } else if (pickedPokemon === 0){
         getUserPokeAPI(wildPokemon);
         getWildPokeAPI();
     } else {
@@ -104,6 +130,7 @@ function loadPage(){
     $(".battle-arena").hide();
     $(".battle-arena-moves").hide();
     $(".battle-text").hide();
+    $("#endBox").hide();
 
     if (wildPokemon !== null){
         console.log("YOU NEED TO CATCH")
@@ -117,14 +144,21 @@ function removeWildPoke(wildPokeNum){
         }
     }
 }
+
+function removeUserPoke(userPokeNum){
+    for (var i = 0; i < caughtPokemon.length; i++) {
+        if (caughtPokemon[i] === userPokeNum){
+            caughtPokemon.splice(i, 1);
+        }
+    }
+}
 //function that accesses the Poke Api to assign random pokemon to the user array
 function getWildPokeAPI(){
-    var wildNumber = wildPokemon[Math.floor(Math.random()*wildPokemon.length)];
+    wildNumber = wildPokemon[Math.floor(Math.random()*wildPokemon.length)];
     console.log("test 1 " + wildNumber)
     let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${wildNumber}/`
     console.log(wildPokemon)
     console.log("test 2 " + pokeAPI)
-    caughtPokemon.push(wildNumber);
     removeWildPoke(wildNumber);
     storePokemon();
     getPokemon();
@@ -143,7 +177,7 @@ function getWildPokeAPI(){
         wildMoveName2 = response.moves[randomMove2].move.name;
         wildMoveName3 = response.moves[randomMove3].move.name;
         wildMoveName4 = response.moves[randomMove4].move.name;
-        
+        allWildMoveNames = [wildMoveName1, wildMoveName2, wildMoveName3, wildMoveName4]
         response.types.forEach(element => wildPokemonType.push(element.type.name))
         wildPokemonSprite = response.sprites.front_default;
         console.log(wildPokemonType)
@@ -267,11 +301,11 @@ function getUserPokeAPI(pokemon){
         response.types.forEach(element => userPokemonType.push(element.type.name))
         userPokemonSprite = response.sprites.back_default;
         generatePokemonUser();
-        generateMoves();
         getUserPokeType1();
         getUserPokeType2();
         getUserPokeType3();
         getUserPokeType4();
+        generateMoves();
         
     })
 }
@@ -284,6 +318,7 @@ function getUserPokeType1(){
         method: "GET"
     }).then(function(value) {
         moveType1 = value.type.name;
+        $("#move1").css('background-color',`${pokeColor[moveType1]}`);
     })
 }
 
@@ -295,6 +330,7 @@ function getUserPokeType2(){
         method: "GET"
     }).then(function(value) {
         moveType2 = value.type.name;
+        $("#move2").css('background-color',`${pokeColor[moveType2]}`);
     })
 }
 
@@ -306,6 +342,7 @@ function getUserPokeType3(){
         method: "GET"
     }).then(function(value) {
         moveType3 = value.type.name;
+        $("#move3").css('background-color',`${pokeColor[moveType3]}`);
     })
 }
 
@@ -317,13 +354,15 @@ function getUserPokeType4(){
         method: "GET"
     }).then(function(value) {
         moveType4 = value.type.name;
+        $("#move4").css('background-color',`${pokeColor[moveType4]}`);
+        
     })
 }
 //generates the pokemon array that holds a number from 1 - 898 that equates to the pokedex
 function generatePokemonAry(){
     wildPokemon = []
 
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 809; i++) {
         wildPokemon.push(i);
         
     }
@@ -356,6 +395,7 @@ function generateWildPokemon(){
     wildPokemonImg.attr("src", wildPokemonSprite)
     wildPokemonImg.height(150).width(150);
     $("#wild-pokemon").append(wildPokemonImg)
+    $("#wild-name").text(wildPokeName);
 }
 
 //TODO: function that uses the assigned pokemon to append the sprite and move buttons to the battle-win.html
@@ -364,10 +404,12 @@ function generatePokemonUser(){
     userPokemonImg.attr("src", userPokemonSprite)
     userPokemonImg.height(150).width(150);
     $("#user-pokemon").append(userPokemonImg)
+    $("#user-name").text(userPokeName);
 }
 
 //TODO: function that uses 4 random moves from the opponent pokemon to interact with the user
 function generateMoves(){
+    
     $("#move1").text(moveName1)
     $("#move2").text(moveName2)
     $("#move3").text(moveName3)
@@ -377,68 +419,109 @@ function generateMoves(){
 function genBattSuperEffective(pokeName, moveName){
     pokemonName = pokeName;
     pokeMoveName = moveName;
+    $(".battle-text").show();  
+    setTimeout(function(){
     $(".battle-text").append($(`<span> ${pokemonName} </span>`))
+    }, 50); 
+    setTimeout(function(){
     $(".battle-text").append($(`<span> used </span>`))
+    }, 100);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> ${pokeMoveName}! </span>`))
+    }, 150);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> It </span>`))
+    }, 200);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> was </span>`))
+    }, 250);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> super </span>`))
+    }, 300);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> effective! </span>`))
+    }, 350);
+    setTimeout(function(){
+        $(".battle-text").hide();  
+    }, 2000);
 }
 
 function genBattEffective(pokeName, moveName){
     pokemonName = pokeName;
     pokeMoveName = moveName;
+    $(".battle-text").show();  
+    setTimeout(function(){
     $(".battle-text").append($(`<span> ${pokemonName} </span>`))
+    }, 50);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> used </span>`))
+    }, 100);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> ${pokeMoveName}! </span>`))
+    }, 150);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> It </span>`))
+    }, 200);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> was </span>`))
+    }, 250);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> effective! </span>`))
+    }, 300);
+    setTimeout(function(){
+        $(".battle-text").hide();  
+    }, 2000);
 }
 
 function genBattNonEffective(pokeName, moveName){
     pokemonName = pokeName;
     pokeMoveName = moveName;
+    $(".battle-text").show();  
     setTimeout(function(){
     $(".battle-text").append($(`<span> ${pokemonName} </span>`))
-    }, 25);
-    setTimeout(function(){
-    $(".battle-text").append($(`<span> used </span>`))
     }, 50);
     setTimeout(function(){
-    $(".battle-text").append($(`<span> ${pokeMoveName}! </span>`))
-    }, 75);
-    setTimeout(function(){
-    $(".battle-text").append($(`<span> It </span>`))
+    $(".battle-text").append($(`<span> used </span>`))
     }, 100);
     setTimeout(function(){
+    $(".battle-text").append($(`<span> ${pokeMoveName}! </span>`))
+    }, 150);
+    setTimeout(function(){
+    $(".battle-text").append($(`<span> It </span>`))
+    }, 200);
+    setTimeout(function(){
     $(".battle-text").append($(`<span> was </span>`))
-    }, 125);
+    }, 250);
     setTimeout(function(){
     $(".battle-text").append($(`<span> not </span>`))
-    }, 150);  
+    }, 300);  
     setTimeout(function(){  
     $(".battle-text").append($(`<span> very </span>`))
-    }, 175);
+    }, 350);
     setTimeout(function(){
     $(".battle-text").append($(`<span> effective! </span>`))
-    }, 200);
+    }, 400);
+    setTimeout(function(){
+        $(".battle-text").hide();  
+    }, 2000);
 }
 
-function wildTurn(wildMoveName){
+function wildTurn(){
     var randomNum = Math.floor(Math.random()*4);
     
     console.log(wildMoves)
     var randomWildMove = wildMoves[randomNum];
-     
+    var randomWildMoveName = allWildMoveNames[randomNum];
     
     console.log(randomWildMove)
     setTimeout(function(){
         getDamageWild(randomWildMove)
-        wildButtonText(wildPokeName, wildMoveName)
+        wildButtonText(wildPokeName, randomWildMoveName);
         enableMoves();
+        checkHealth();
     }, 2000);
+
+    
 }
 
 function getDamageUser(userMove, userMoveName){
@@ -498,11 +581,45 @@ function enableMoves(){
     $("#move4").attr('disabled', false);
 }
 
+function showDefeat(){
+    
+    $("#battle-home").hide();
+    $(".battle-arena").hide();
+    $(".battle-arena-moves").hide();
+    $(".battle-text").hide();
+    $("#endBox").show();     
+    $(".end-text").append($(`<span> ${userPokeName} is unable to battle, and ran off back into the wild! </span>`))
+}
+
+function showVictory(){
+    $("#battle-home").hide();
+    $(".battle-arena").hide();
+    $(".battle-arena-moves").hide();
+    $(".battle-text").hide(); 
+    $("#endBox").show(); 
+    $(".end-text").append($(`<span> Congratulation! You caught ${wildPokeName}! </span>`))
+}
+
 function checkHealth(){
     if(userHealth <= 0){
-        window.location.replace("http://127.0.0.1:5500/index.html");
+        getPokemon();
+        removeUserPoke(pickedPokemon);
+        wildPokemon.push(pickedPokemon);
+        wildPokemon.push(wildNumber);
+        storePokemon();
+        pickedPokemon = 0;
+        localStorage.setItem('picked pokemon', JSON.parse(pickedPokemon));
+        showDefeat();
+        setTimeout(function(){
+        window.location.replace("https://tyrannofloresrex.github.io/PokeBatEx/index.html");
+        }, 1500)
     }else if(wildHealth <= 0){
-        window.location.replace("http://127.0.0.1:5500/gallery.html");
+        caughtPokemon.push(wildNumber);
+        storePokemon();
+        showVictory();
+        setTimeout(function(){
+        window.location.replace("https://tyrannofloresrex.github.io/PokeBatEx/gallery.html");
+        }, 1500)
     }
 }
 
@@ -513,9 +630,8 @@ function checkHealth(){
 $("#move1").on("click", function(event){
     event.preventDefault();
     getDamageUser(moveType1, moveName1);
-
-    wildTurn();
     checkHealth()
+    wildTurn();
     // console.log(moveType1);
     // console.log(wildPokemonType[0])
     // console.log(pokeTypesEffect[moveType1][pokeTypes[wildPokemonType[0]]])
@@ -526,24 +642,27 @@ $("#move2").on("click", function(event){
     event.preventDefault();
     // console.log(moveType2);
     getDamageUser(moveType2, moveName2);
-    wildTurn();
     checkHealth()
+    wildTurn();
+    
 });
 
 $("#move3").on("click", function(event){
     event.preventDefault();
     // console.log(moveType3);
     getDamageUser(moveType3, moveName3);
-    wildTurn();
     checkHealth()
+    wildTurn();
+    
 });
 
 $("#move4").on("click", function(event){
     event.preventDefault();
     console.log(moveType4);
     getDamageUser(moveType4, moveName4);
-    wildTurn();
     checkHealth()
+    wildTurn();
+    
 });
 
 
