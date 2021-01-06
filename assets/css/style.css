@@ -25,6 +25,9 @@ body {
     margin: 185px auto;
     border-style: none;
 }
+p{
+    border-radius: 9px
+}
 #container {
     border-radius: 10%;
     width: 70vw;

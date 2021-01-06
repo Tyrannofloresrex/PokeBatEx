@@ -60,6 +60,15 @@ body {
     border-radius: 10%;
 }
 
+#battleBox {
+    display: flex;
+    justify-content: center; 
+    margin-top: 15px;
+    border-radius: 10%;
+    height: 20vh;
+    border-style: none;
+}
+
 .topBtns {
     margin-bottom: 5px;
 }
@@ -73,11 +82,17 @@ body {
     #main-battle {
         width: 100vw;
     }
-    .column{
+    .column {
         width: 50%;
     }
     #user, #wild {
         padding: 0 0;
         width: 33vw;
+    }
+    #battleBox {
+        height: 15vh;
+    }
+    .battle-text {
+        font-size: small;
     }
 }
