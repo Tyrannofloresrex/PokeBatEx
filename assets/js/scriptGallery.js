@@ -28,8 +28,6 @@ for (let i = 0; i < pokeNums.length; i++) {
       apiImage.attr({
        "src": data.cards[0].imageUrl,
        "cardNum": cardNum,
-       "loading":lazy,
-      //  lazy loading only working on chrome and latest browser version, NO SAFARI
       });
         
       $(".gallery").append(apiImage);
