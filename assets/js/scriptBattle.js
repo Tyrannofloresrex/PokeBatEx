@@ -7,6 +7,11 @@ var wildPokemonSprite
 var wildPokemonType = []
 var userPokemonType = []
 var wildNumber 
+var allUserMoves 
+var randomMove1 
+var randomMove2 
+var randomMove3 
+var randomMove4 
 var allWildMoveNames
 var wildPokeName
 var userPokeName
@@ -279,6 +284,32 @@ function getUserPickedPokeAPI(pokemon){
         
     })
 }
+//function that regenerates the moves based off of the move object. 
+function regenUserPokeMoves(pokemon){
+    let pokeAPI = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
+    $.ajax({
+        url: pokeAPI,
+        method: "GET"
+    }).then(function(response) {
+        
+        var allUserMoves = response.moves;
+        var randomMove1 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove2 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove3 = Math.floor(Math.random()*allUserMoves.length);
+        var randomMove4 = Math.floor(Math.random()*allUserMoves.length);
+        moveName1 = response.moves[randomMove1].move.name;
+        moveName2 = response.moves[randomMove2].move.name;
+        moveName3 = response.moves[randomMove3].move.name;
+        moveName4 = response.moves[randomMove4].move.name;
+        generateMoves();
+        getUserPokeType1();
+        getUserPokeType2();
+        getUserPokeType3();
+        getUserPokeType4();
+        
+    })
+}
+
 //Function that accesses the Poke Api to assign random pokemon to the user array
 function getUserPokeAPI(pokemon){
     var userNumber = pokemon[Math.floor(Math.random()*pokemon.length)];
@@ -297,11 +328,11 @@ function getUserPokeAPI(pokemon){
     }).then(function(response) {
         
         userPokeName = response.name;
-        var allUserMoves = response.moves;
-        var randomMove1 = Math.floor(Math.random()*allUserMoves.length);
-        var randomMove2 = Math.floor(Math.random()*allUserMoves.length);
-        var randomMove3 = Math.floor(Math.random()*allUserMoves.length);
-        var randomMove4 = Math.floor(Math.random()*allUserMoves.length);
+        allUserMoves = response.moves;
+        randomMove1 = Math.floor(Math.random()*allUserMoves.length);
+        randomMove2 = Math.floor(Math.random()*allUserMoves.length);
+        randomMove3 = Math.floor(Math.random()*allUserMoves.length);
+        randomMove4 = Math.floor(Math.random()*allUserMoves.length);
         moveName1 = response.moves[randomMove1].move.name;
         moveName2 = response.moves[randomMove2].move.name;
         moveName3 = response.moves[randomMove3].move.name;
@@ -315,9 +346,10 @@ function getUserPokeAPI(pokemon){
         getUserPokeType3();
         getUserPokeType4();
         generateMoves();
-        
+
     })
 }
+
 //function that retrieves the typing from the move api 
 function getUserPokeType1(){
     var pokeMoveType1 = moveName1
@@ -646,6 +678,9 @@ $("#move1").on("click", function(event){
     getDamageUser(moveType1, moveName1);
     checkHealth()
     wildTurn();
+    regenUserPokeMoves(pickedPokemon)
+        
+  
     // console.log(moveType1);
     // console.log(wildPokemonType[0])
     // console.log(pokeTypesEffect[moveType1][pokeTypes[wildPokemonType[0]]])
@@ -658,6 +693,7 @@ $("#move2").on("click", function(event){
     getDamageUser(moveType2, moveName2);
     checkHealth()
     wildTurn();
+    regenUserPokeMoves(pickedPokemon)
     
 });
 
@@ -667,7 +703,7 @@ $("#move3").on("click", function(event){
     getDamageUser(moveType3, moveName3);
     checkHealth()
     wildTurn();
-    
+    regenUserPokeMoves(pickedPokemon)
 });
 
 $("#move4").on("click", function(event){
@@ -676,9 +712,8 @@ $("#move4").on("click", function(event){
     getDamageUser(moveType4, moveName4);
     checkHealth()
     wildTurn();
-    
+    regenUserPokeMoves(pickedPokemon)
 });
-
 
 
 
