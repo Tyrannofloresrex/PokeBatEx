@@ -114,6 +114,7 @@ $("#battle-button").on("click", function(event){
     $("#battleBox").show();
     $(".battle-arena").show();
     $(".battle-arena-moves").show();
+    $("#battleBox").show();
     $(".battle-text").hide();   
     
     if (wildPokemon.length === 0){
@@ -145,6 +146,8 @@ function loadPage(){
     $(".battle-arena-moves").hide();
     $(".battle-text").hide();
     $("#endBox").hide();
+    $("#battleBox").hide();
+    
 
 }
 //function that removes a variable from the wild pokemon array
