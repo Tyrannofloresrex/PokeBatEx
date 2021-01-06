@@ -25,7 +25,7 @@ body {
     margin: 185px auto;
     border-style: none;
 }
-p{
+p {
     border-radius: 9px
 }
 #container {
@@ -38,7 +38,7 @@ p{
     #container {
         border-style: none;
     }
-    li {
+    .one {
         color: rgb(246, 72, 29);
     }
 }
